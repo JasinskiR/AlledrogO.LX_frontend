@@ -49,6 +49,20 @@
       </div>
 
       <div class="element-input-container">
+        <label for="phoneNumber" class="d-flex text-white element-label"
+        >Phone number:</label
+        >
+        <input
+          type="number"
+          class="form-control text-white"
+          id="phoneNumber"
+          ngModel
+          name="phoneNumber"
+          [(ngModel)]="user.phoneNumber"
+        />
+      </div>
+
+      <div class="element-input-container">
         <label for="email" class="d-flex text-white element-label"
         >E-mail:</label
         >

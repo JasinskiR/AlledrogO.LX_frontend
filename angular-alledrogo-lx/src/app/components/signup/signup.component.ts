@@ -4,6 +4,9 @@ import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 // @ts-ignore
 import zxcvbn from 'zxcvbn';
+import {User} from '../../models/user';
+import {LoginService} from "../../services/login.service";
+import {SignupService} from "../../services/signup.service";
 
 @Component({
   selector: 'app-signup',
@@ -18,19 +21,15 @@ import zxcvbn from 'zxcvbn';
 export class SignupComponent {
   @ViewChild('f') registerForm!: NgForm;
   errorMessage: string = "";
-  user = {
-    name: '',
-    surname: '',
-    username: '',
-    email: '',
-    password: '',
-    showPassword: false
-  };
+  user: User = { id: '', name: '', surname: '', username: '', email: '', password: '', phoneNumber: '' };
+  showPassword!: false;
+
   passwordType: string = 'password';
   showPasswordIcon: boolean = false;
 
   constructor(
     private router: Router,
+    private signupService: SignupService
   ) {
   }
 
@@ -83,5 +82,16 @@ export class SignupComponent {
 
   public signUp(): void {
     console.log(this.user);
+    const user = this.registerForm.value;
+    this.signupService.signUp(user).subscribe(
+      response => {
+        console.log('User signed up successfully');
+        this.router.navigate(['/home']); // Navigate to home or another route upon successful sign-up
+      },
+      error => {
+        console.error('Error signing up:', error);
+        this.errorMessage = 'There was an error signing up. Please try again.';
+      }
+    );
   }
 }
