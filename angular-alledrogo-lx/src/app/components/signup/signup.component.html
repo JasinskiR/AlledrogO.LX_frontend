@@ -1,0 +1,130 @@
+<div class="background-svg">
+  <div class="signup-container">
+    <p class="text-white signup-header">Sign Up</p>
+    <p class="text-white signup-info">Register Yourself Now!</p>
+    <form #f="ngForm">
+      <div class="element-input-container">
+        <label for="name" class="d-flex text-white element-label"
+        >Name:</label
+        >
+        <input
+          type="text"
+          class="form-control text-white"
+          id="name"
+          ngModel
+          name="name"
+          [(ngModel)]="user.name"
+          required
+        />
+      </div>
+
+      <div class="element-input-container">
+        <label for="surname" class="d-flex text-white element-label"
+        >Surname:</label
+        >
+        <input
+          type="text"
+          class="form-control text-white"
+          id="surname"
+          ngModel
+          name="surname"
+          [(ngModel)]="user.surname"
+          required
+        />
+      </div>
+
+      <div class="element-input-container">
+        <label for="username" class="d-flex text-white element-label"
+        >Username:</label
+        >
+        <input
+          type="text"
+          class="form-control text-white"
+          id="username"
+          ngModel
+          name="username"
+          [(ngModel)]="user.username"
+          required
+        />
+      </div>
+
+      <div class="element-input-container">
+        <label for="email" class="d-flex text-white element-label"
+        >E-mail:</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="user.email"
+          class="form-control text-white"
+          email
+          required
+        />
+      </div>
+      <div *ngIf="errorMessage" class="error-text">
+        {{ errorMessage }}
+      </div>
+
+      <div class="element-input-container">
+        <label for="password" class="d-flex text-white element-label"
+        >Password:</label
+        >
+        <div class="input-group">
+          <input
+            [type]="passwordType"
+            id="password"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="user.password"
+            class="form-control text-white"
+            title="Password must be at least 8 characters long, contain at least one capital letter, and one special character"
+            required
+          />
+          <span class="input-group-append">
+            <button
+              class="btn show-password-button"
+              (click)="togglePasswordVisibility()"
+            >
+              <i class="fa-sharp fa-solid fa-eye-slash nav-icon"></i>
+            </button>
+          </span>
+        </div>
+        <div class="password-requirements text-white">
+          Password requirements:
+          <ul>
+            <li>must be at least 8 characters long,</li>
+            <li>must contain at least one capital letter,</li>
+            <li>must contain at least one special symbol
+              (!&#64;&#35;&#36;&#37;&#94;&#95;&#124;).
+            </li>
+            <li>must contain at least one number</li>
+          </ul>
+        </div>
+        <span class="text-white">
+          {{ getPasswordStrength(user.password) }}
+        </span>
+      </div>
+
+      <div class="signup-button-container">
+        <button
+          type="button"
+          (click)="signUp()"
+          class="btn button-signup text-white"
+          [disabled]="!f.form.valid || !checkPasswordValidity(user.password)">
+          <span
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+          Sign up
+        </button>
+      </div>
+      <div class="mt-2">
+        <a class="text-white element-label" routerLink="/login"
+        >Already registered?
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
