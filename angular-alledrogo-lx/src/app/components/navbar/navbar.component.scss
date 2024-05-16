@@ -1,0 +1,86 @@
+.navbar {
+  background-color: #496989;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.icon-button {
+  background-color: #496989;
+  border: none;
+  font-size: 1.5em;
+}
+
+.navbar input {
+  background-color:#496989;
+  border-style: none;
+  border-bottom: solid white;
+  color: white;
+  font-weight: bold;
+  width: 20em;
+  transition: all 0.3s;
+}
+
+.navbar input:hover, .navbar input:active, .navbar input:focus {
+  background-color:white;
+  border: none;
+  color: #496989;
+  width: 20em;
+  outline: none;
+}
+
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.navbar ul {
+  list-style-type: none;
+}
+
+.navbar ul > li, li > a {
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5em;
+  transition: all 0.3s;
+}
+
+.navbar ul > li:not(:first-child) {
+  margin-left: 2em;
+}
+
+.navbar ul > li:hover a, ul > li:active a {
+  color: #496989;
+}
+
+.navbar ul > li:hover, ul > li:active {
+  background-color: white;
+}
+
+.nav-icon {
+  cursor: pointer;
+  color: white;
+}
+
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 0.2em;
+}
+
+.search-input {
+  background-color: white;
+  border: none;
+  padding: 0.5em;
+}
