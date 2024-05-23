@@ -1,0 +1,13 @@
+<div class="search-container">
+  <div class="text">
+    <input class="search-input" type="text" placeholder="Search by text or #tag... " #searchString >
+    <button class="icon-button" (click)="searchByString(searchString.value)"> <i class="fa-sharp fa-solid fa-magnifying-glass search-icon"></i> </button>
+  </div>
+  <p>Choose tags</p>
+  <div class="tags">
+    <div class="tag" *ngFor="let tag of tags">
+      <input class="tag-check" type="checkbox" [value]="tag.name" (change)="onTagChange(tag.name, $event)"> {{ tag.name }}
+    </div>
+  </div>
+  <button class="search-button" (click)="searchAll(searchString.value)"> Show results </button>
+</div>
