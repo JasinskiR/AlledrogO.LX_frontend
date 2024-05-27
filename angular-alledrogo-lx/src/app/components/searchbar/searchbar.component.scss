@@ -98,6 +98,23 @@
   color: #58A399;
 }
 
+.hint-tag-button {
+  cursor: pointer;
+  color: #58A399;
+  background-color: white;
+  border: solid #58A399;
+  font-weight: bold;
+  font-size: medium;
+  min-width: 20vw;
+  transition: all 0.3s;
+  visibility: hidden;
+}
+
+.hint-tag-button:hover, .hint-tag-button:active {
+  color: white;
+  background-color: #58A399;
+}
+
 @media (min-width: 500px) and (max-width: 768px) {
   .tags {
     grid-template-columns: repeat(5, 1fr);
