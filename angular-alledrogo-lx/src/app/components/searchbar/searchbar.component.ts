@@ -1,7 +1,7 @@
-import { Component, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Tag } from '../../models/tag';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -21,8 +21,26 @@ export class SearchbarComponent {
   selectedTags: string[] = [];
   tagHint: string = '';
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private readonly activatedRoute: ActivatedRoute, private router: Router, private renderer: Renderer2, private el: ElementRef) {
     this.tags = this.activatedRoute.snapshot.data['tags']
+  }
+  
+  ngOnInit(){
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.resetSearchParams();
+    });
+  }
+
+  resetSearchParams(){
+    const inputElement = this.el.nativeElement.querySelector('.search-input');
+    if (inputElement) {
+      this.renderer.setProperty(inputElement, 'value', ''); // Clear the value
+    }
+    this.selectedTags.forEach(tagName => {
+      this.deselectCheckbox(tagName);
+    });
+    this.selectedTags = [];
+    this.tagHint = '';
   }
 
   onInputChange(searchString: string): void {
@@ -30,7 +48,10 @@ export class SearchbarComponent {
     hintBtn[0].style.visibility = "hidden";
     this.tagHint = '';
     if (searchString.startsWith('#')) {
-      const searchTag = searchString.substring(1);
+      let searchTag: string = searchString.substring(1);
+      if (searchString.includes(' ')) {
+        searchTag = searchString.substring(1, searchString.indexOf(' '));
+      }
       const matchingTags = this.tags.filter(tag => tag.name.startsWith(searchTag));
       hintBtn[0].style.visibility = "visible";
       if (matchingTags.length > 0) {
@@ -77,28 +98,59 @@ export class SearchbarComponent {
         bodySearch = searchString.substring(searchString.indexOf(' ') + 1);
       }
     }
-    const body = {
-      search: {
-        queryString: bodySearch,
-        tags: []
-      }
-    }
-    this.router.navigate(['/search', JSON.stringify(body)]);
+    this.router.navigate(['/search', JSON.stringify(this.createSearchBody(bodySearch, false))]);
   }
 
   searchAll(searchString: string) {
     let bodySearch: string = '';
+    let extraTag: string = '';
     if (searchString.startsWith('#')) {
+      extraTag = searchString.substring(1, searchString.length);
       if (searchString.includes(' ')) {
+        extraTag = searchString.substring(1, searchString.indexOf(' '));
         bodySearch = searchString.substring(searchString.indexOf(' ') + 1);
       }
     }
-    const body = {
-      search: {
-        queryString: bodySearch,
-        tags: this.selectedTags
+    else {
+      bodySearch = searchString;
+    }
+    this.selectCheckbox(extraTag);
+    this.router.navigate(['/search', JSON.stringify(this.createSearchBody(bodySearch, true))]);
+  }
+
+  selectCheckbox(tagName: string) {
+    const checkbox = document.getElementById(tagName) as HTMLInputElement;
+    if (checkbox) {
+      console.log("istnieje");
+      if (!checkbox.checked) {
+        checkbox.checked = true;
+        if (!this.selectedTags.includes(tagName)) {
+          this.selectedTags.push(tagName);
+        }
       }
     }
-    this.router.navigate(['/search', JSON.stringify(body)]);
+  }
+  
+  deselectCheckbox(tagName: string) {
+    const checkbox = document.getElementById(tagName) as HTMLInputElement;
+    if (checkbox) {
+      if (checkbox.checked) {
+        checkbox.checked = false;
+      }
+    }
+  }
+
+  createSearchBody(searchString: string, tagsIncluded: boolean) {
+    let searchTags: string[] = [];
+    if (tagsIncluded){
+      searchTags = this.selectedTags;
+    }
+    const body = {
+      search: {
+        queryString: searchString,
+        tags: searchTags
+      }
+    }
+    return body;
   }
 }
