@@ -1,0 +1,21 @@
+<div class="post">
+  <div class="info">
+    <div class="title">
+      <h1>{{ post.title }}</h1>
+    </div>
+    <div class="description">
+      {{ post.description }}
+    </div>
+  </div>
+  <div class="photo-gallery">
+      <img class="main-photo" [src]="mainPhoto">
+    <div class="preview">
+      <div *ngFor="let photo of post.images; let i = index">
+        <img class="thumbnail" [src]="photo" 
+        [class.selected]="photo === mainPhoto" 
+        [class.thumbnail]="photo !== mainPhoto" 
+        (click)="changeMainPhoto(photo, i)">
+      </div>
+    </div>
+  </div>
+</div>

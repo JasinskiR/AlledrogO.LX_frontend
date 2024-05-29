@@ -1,10 +1,9 @@
 import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PostInGeneralComponent } from '../post-in-general/post-in-general.component';
-import { PostsService } from '../../services/posts.service';
 import { Post } from '../../models/post';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-homepage',
