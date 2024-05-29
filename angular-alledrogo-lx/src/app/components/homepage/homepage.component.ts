@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 export class HomepageComponent {
   posts: Post[] = [];
+  tags: string[] = [];
+  searchString: string = '';
 
   constructor(private readonly activatedRoute: ActivatedRoute) {
   }
@@ -33,6 +35,9 @@ export class HomepageComponent {
     this.activatedRoute.params.subscribe((params: Params) => {
       const body = params['body'];
       if (body) {
+        const query = JSON.parse(params['body']);
+        this.searchString = query.search.queryString;
+        this.tags = query.search.tags;
         this.fetchPostsBySearch();
       } else {
         this.fetchAllPosts();

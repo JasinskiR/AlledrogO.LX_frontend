@@ -1,4 +1,20 @@
 <app-searchbar></app-searchbar>
+
+<ng-container *ngIf="searchString && searchString.length > 0 || tags.length > 0">
+  <div class="params-container">
+    <p>Results for:
+    <ng-container *ngIf="searchString && searchString.length > 0">
+       {{searchString}}
+    </ng-container> 
+    </p>
+    <ng-container *ngIf="tags && tags.length > 0">
+      <ul class="tag-list">
+        <li *ngFor="let tag of tags">#{{ tag }}</li>
+      </ul>
+    </ng-container> 
+  </div>
+</ng-container>
+
 <section class="results">
   <app-post-in-general
   *ngFor="let post of posts" 
