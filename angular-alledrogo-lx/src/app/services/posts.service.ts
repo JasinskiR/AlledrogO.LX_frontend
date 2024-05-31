@@ -6,6 +6,7 @@ import { map } from 'rxjs';
 
 // const postUrl = 'http://localhost:3000/posts';
 const postUrl = 'http://localhost:5000/api/Post';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,4 +20,9 @@ export class PostsService {
   getPostById(postId: string): Observable<Post> {
     return this.http.get<Post>(`${postUrl}/${postId}`);
   }  
+
+  getPostsBySearchString(body: any): Observable<Post[]> {
+    const body_obj = JSON.parse(body);
+    return this.http.post<Post[]>(`${postUrl}/search`, body_obj);
+  }
 }
