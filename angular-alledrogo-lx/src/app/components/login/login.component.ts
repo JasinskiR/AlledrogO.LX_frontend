@@ -20,7 +20,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 
 export class LoginComponent {
-  user: User = { id: '', name: '', surname: '', username: '', email: '', password: '', phoneNumber: '' };
+  user: User = { email: '', password: '', phoneNumber: '' };
   errorMessage: string | null = null;
   loading: boolean = false;
   passwordType: string = 'password';

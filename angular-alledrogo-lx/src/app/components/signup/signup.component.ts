@@ -21,7 +21,7 @@ import {SignupService} from "../../services/signup.service";
 export class SignupComponent {
   @ViewChild('f') registerForm!: NgForm;
   errorMessage: string = "";
-  user: User = { id: '', name: '', surname: '', username: '', email: '', password: '', phoneNumber: '' };
+  user: User = { email: '', password: '', phoneNumber: '' };
   showPassword!: false;
 
   passwordType: string = 'password';
@@ -82,7 +82,12 @@ export class SignupComponent {
 
   public signUp(): void {
     console.log(this.user);
-    const user = this.registerForm.value;
+    // Explicitly casting phoneNumber to a string
+    const user = {
+      email: this.registerForm.controls['email'].value,
+      password: this.registerForm.controls['password'].value,
+      phoneNumber: String(this.registerForm.controls['phoneNumber']?.value)
+    };
     this.signupService.signUp(user).subscribe(
       response => {
         console.log('User signed up successfully');

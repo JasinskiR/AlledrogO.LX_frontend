@@ -3,64 +3,6 @@
     <p class="text-white signup-header">Sign Up</p>
     <p class="text-white signup-info">Register Yourself Now!</p>
     <form #f="ngForm">
-      <div class="element-input-container">
-        <label for="name" class="d-flex text-white element-label"
-        >Name:</label
-        >
-        <input
-          type="text"
-          class="form-control text-white"
-          id="name"
-          ngModel
-          name="name"
-          [(ngModel)]="user.name"
-          required
-        />
-      </div>
-
-      <div class="element-input-container">
-        <label for="surname" class="d-flex text-white element-label"
-        >Surname:</label
-        >
-        <input
-          type="text"
-          class="form-control text-white"
-          id="surname"
-          ngModel
-          name="surname"
-          [(ngModel)]="user.surname"
-          required
-        />
-      </div>
-
-      <div class="element-input-container">
-        <label for="username" class="d-flex text-white element-label"
-        >Username:</label
-        >
-        <input
-          type="text"
-          class="form-control text-white"
-          id="username"
-          ngModel
-          name="username"
-          [(ngModel)]="user.username"
-          required
-        />
-      </div>
-
-      <div class="element-input-container">
-        <label for="phoneNumber" class="d-flex text-white element-label"
-        >Phone number:</label
-        >
-        <input
-          type="number"
-          class="form-control text-white"
-          id="phoneNumber"
-          ngModel
-          name="phoneNumber"
-          [(ngModel)]="user.phoneNumber"
-        />
-      </div>
 
       <div class="element-input-container">
         <label for="email" class="d-flex text-white element-label"
@@ -78,6 +20,20 @@
       </div>
       <div *ngIf="errorMessage" class="error-text">
         {{ errorMessage }}
+      </div>
+
+      <div class="element-input-container">
+        <label for="phoneNumber" class="d-flex text-white element-label"
+        >Phone number:</label
+        >
+        <input
+          type="number"
+          class="form-control text-white"
+          id="phoneNumber"
+          ngModel
+          name="phoneNumber"
+          [(ngModel)]="user.phoneNumber"
+        />
       </div>
 
       <div class="element-input-container">
