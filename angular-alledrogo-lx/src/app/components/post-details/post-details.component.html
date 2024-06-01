@@ -11,10 +11,10 @@
       <img class="main-photo" [src]="mainPhoto">
     <div class="preview">
       <div *ngFor="let photo of post.images; let i = index">
-        <img class="thumbnail" [src]="photo" 
-        [class.selected]="photo === mainPhoto" 
-        [class.thumbnail]="photo !== mainPhoto" 
-        (click)="changeMainPhoto(photo, i)">
+        <img class="thumbnail" [src]="photo.url" 
+        [class.selected]="photo.url === mainPhoto" 
+        [class.thumbnail]="photo.url !== mainPhoto" 
+        (click)="changeMainPhoto(photo.url, i)">
       </div>
     </div>
   </div>
