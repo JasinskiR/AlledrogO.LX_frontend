@@ -73,12 +73,17 @@ export class SignupComponent {
     const hasCapitalLetter = capitalLetterRegex.test(password);
     const hasSpecialSymbol = specialSymbolRegex.test(password);
     const hasNumber = numberRegex.test(password);
-    console.log(hasValidLength && hasCapitalLetter && hasSpecialSymbol && hasNumber);
     // Return true if all requirements are met, false otherwise
     return (
       hasValidLength && hasCapitalLetter && hasSpecialSymbol && hasNumber
     );
   }
+
+  isNineDigitPhoneNumberValid(phoneNumber: string): boolean {
+    const nineDigitPhoneNumberRegex = /^\d{9}$/;
+    return nineDigitPhoneNumberRegex.test(phoneNumber);
+  }
+
 
   public signUp(): void {
     console.log(this.user);

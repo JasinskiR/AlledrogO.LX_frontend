@@ -81,7 +81,7 @@
           type="button"
           (click)="signUp()"
           class="btn button-signup text-white"
-          [disabled]="!f.form.valid || !checkPasswordValidity(user.password)">
+          [disabled]="!f.form.valid || !checkPasswordValidity(user.password) || !isNineDigitPhoneNumberValid(user.phoneNumber)">
           <span
             class="spinner-border spinner-border-sm"
             role="status"

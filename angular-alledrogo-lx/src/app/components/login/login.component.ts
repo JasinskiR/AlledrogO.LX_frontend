@@ -5,7 +5,7 @@ import { NgIf } from "@angular/common";
 import { Router } from '@angular/router';
 import { LoginResponse, User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -28,44 +28,40 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
+    private http: HttpClient,
     private loginService: LoginService
   ) { }
 
   signIn(): void {
     this.loading = true;
     this.errorMessage = '';
-    this.loginService.checkUserExists(this.user.email, this.user.password).subscribe(
-      user => {
-        if (user) {
-          console.log('User exists');
-          // Handle successful check
-        } else {
-          console.log('User does not exist');
-          // Handle unsuccessful check
-        }
-      },
-      error => {
-        console.error('Error checking user:', error);
-        // Handle error
-      }
-    );
+    const url = 'http://localhost:5000/api/User/login';
+    const body = JSON.stringify(this.user);
 
-    // this.loginService.login(this.user).subscribe(
-    //   (response: LoginResponse) => {
-    //     console.log('Login successful', response);
-    //     // Store the token and user details
-    //     localStorage.setItem('token', response.token);
-    //     localStorage.setItem('user', JSON.stringify(response.user));
-    //     // Navigate to home on successful login
-    //     this.router.navigate(['/home']);
-    //   },
-    //   (error: HttpErrorResponse) => {
-    //     console.error('Login failed', error);
-    //     this.errorMessage = 'Login failed. Please check your credentials and try again.';
-    //     this.loading = false;
-    //   }
-    // );
+    this.http.post(url, body, {
+      observe: 'response', // To get full response including headers
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }).subscribe((response) => {
+      if (response.headers.has('Set-Cookie')) {
+        const rawCookie = response.headers.get('Set-Cookie');
+        console.log('Cookie: ', rawCookie);
+        if (rawCookie!== null) {
+          const sessionTokenMatch = rawCookie.match(/\.AspNetCore\.Identity\.Application=([^;]+)/);
+          console.log('SessionToken: ', sessionTokenMatch);
+          if (sessionTokenMatch && sessionTokenMatch[1]) {
+            document.cookie = `.AspNetCore.Identity.Application=${sessionTokenMatch[1]}; path=/`;
+          }
+        }
+      }
+      console.log('Response Body:', response.body);
+      this.router.navigate(['/home']);
+    }, (error: HttpErrorResponse) => {
+      console.error('Login failed', error);
+      this.errorMessage = 'Login failed. Please check your credentials and try again.';
+      this.loading = false;
+    });
   }
+
 
   togglePasswordVisibility(): void {
     this.passwordType = this.passwordType === 'password' ? 'text' : 'password';
