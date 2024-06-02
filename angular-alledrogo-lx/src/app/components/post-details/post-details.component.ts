@@ -19,7 +19,9 @@ export class PostDetailsComponent {
 
   constructor(private readonly activatedRoute: ActivatedRoute) {
     this.post = this.activatedRoute.snapshot.data['post'];
-    this.mainPhoto = this.post.images?.[0];
+    this.mainPhoto = this.post.images?.[0].url;
+    console.log("cze");
+    console.log(this.mainPhoto);
     this.selectedPhotoIndex = 0;
   }
 
