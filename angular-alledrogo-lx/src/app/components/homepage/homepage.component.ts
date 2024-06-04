@@ -24,7 +24,7 @@ export class HomepageComponent {
   tags: string[] = [];
   searchString: string = '';
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {

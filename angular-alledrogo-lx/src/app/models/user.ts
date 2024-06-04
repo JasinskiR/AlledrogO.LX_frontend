@@ -9,7 +9,9 @@ export interface LoginCredentials {
   password: string;
 }
 
-export interface LoginResponse {
-  token: string;
-  user: User;
+export interface LoginResponseBody {
+  accessToken: string;
+  expiresIn: number;
+  refreshToken: string;
+  tokenType: string;
 }

@@ -5,8 +5,8 @@ input.ng-invalid.ng-touched {
 }
 
 .background-svg {
-  width: 100vw;
-  height: 100svh;
+  //width: 100vw;
+  height: 100vh;
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -119,26 +119,26 @@ input:focus {
 
 .button-login {
   font-weight: 700;
-  font-size: 1.25em; // Adjust the font size as needed
+  font-size: 1.25em;
   border: none;
-  border-radius: 5px; // Rounded corners for the button
-  background-color: #A8CD9F; // Button background color
-  color: white; // Text color
-  padding: 10px 20px; // Padding inside the button
-  cursor: pointer; // Change the cursor to indicate it's clickable
-  transition: background-color 0.3s ease; // Smooth transition for hover effect
+  border-radius: 5px;
+  background-color: #A8CD9F;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: darken(#A8CD9F, 10%); // Darken the background on hover
+    background-color: darken(#A8CD9F, 10%);
   }
 
   &:active {
-    background-color: #A8CD9F; // Reset background color on active state
+    background-color: #A8CD9F;
   }
 }
 
 .spinner-border {
-  margin-right: 10px; // Add some space between the spinner and the text
+  margin-right: 10px;
 }
 
 

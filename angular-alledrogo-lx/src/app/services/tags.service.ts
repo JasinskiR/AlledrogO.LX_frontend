@@ -9,8 +9,8 @@ const tagUrl = 'http://localhost:5000/api/Tag';
   providedIn: 'root'
 })
 export class TagsService {
-  
-  constructor(private readonly http: HttpClient) {}
+
+  constructor(private http: HttpClient) {}
 
   getAllTags(): Observable<Tag[]> {
     return this.http.get<Tag[]>(tagUrl)

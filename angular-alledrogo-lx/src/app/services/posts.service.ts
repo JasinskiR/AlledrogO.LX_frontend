@@ -11,7 +11,7 @@ const postUrl = 'http://localhost:5000/api/Post';
   providedIn: 'root'
 })
 export class PostsService {
-  constructor(private readonly http: HttpClient){ }
+  constructor(private http: HttpClient){ }
 
   getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(postUrl);
@@ -19,7 +19,7 @@ export class PostsService {
 
   getPostById(postId: string): Observable<Post> {
     return this.http.get<Post>(`${postUrl}/${postId}`);
-  }  
+  }
 
   getPostsBySearchString(body: any): Observable<Post[]> {
     const body_obj = JSON.parse(body);
