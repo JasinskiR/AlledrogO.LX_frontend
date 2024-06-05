@@ -11,8 +11,17 @@
   </div>
 
   <ul class="user-links">
-    <li><a routerLink="/account" routerLinkActive="active">Account</a></li>
-    <li><a routerLink="login">Log In</a></li>
-    <li><a routerLink="signup">Signup</a></li>
+    <li *ngIf="isLoggedIn()">
+      <a (click)="logout()" routerLink="/home">Logout</a>
+    </li>
+    <li>
+      <a routerLink="/account">Account</a>
+    </li>
+    <li *ngIf="!isLoggedIn()">
+      <a routerLink="/login">Log In</a>
+    </li>
+    <li *ngIf="!isLoggedIn()">
+      <a routerLink="/signup">Signup</a>
+    </li>
   </ul>
 </nav>

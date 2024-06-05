@@ -5,6 +5,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { LoginResponseBody, User } from '../../models/user';
 import { LoginService } from '../../services/login.service';
 import {NgIf} from "@angular/common";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    public authService: AuthService
   ) { }
 
   signIn(): void {
@@ -41,6 +43,7 @@ export class LoginComponent {
         localStorage.setItem('accessToken', responseBody.accessToken); // Store the token
         this.router.navigate(['/home']);
         this.loading = false;
+        this.authService.isLoggedIn = true;
       }, (error: HttpErrorResponse) => {
         console.error('Login failed', error);
         this.errorMessage = 'Login failed. Please check your credentials and try again.';
