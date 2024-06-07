@@ -30,4 +30,8 @@ export class PostsService {
   getAllUsersPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${authorUrl}/posts`);
   }
+
+  createPost(post: { title: string; description: string}): Observable<any> {
+    return this.http.post<any>(postUrl, post);
+  }
 }

@@ -1,0 +1,37 @@
+.new-post-button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  color:#58A399;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 2rem;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.new-post-button:hover, .post-form-button:active {
+  background-color: #58A399;
+  color: white;
+}
+
+.results {
+  display: grid;
+  column-gap: 2em;
+  row-gap: 2em;
+  grid-template-columns: repeat(auto-fill, minmax(25em, 25em));
+  margin: 2em;
+  justify-content: space-around;
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 499px) {
+  .results {
+      grid-template-columns: 1fr;
+  }    
+}
