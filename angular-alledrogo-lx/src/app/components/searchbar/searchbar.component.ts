@@ -21,10 +21,10 @@ export class SearchbarComponent {
   selectedTags: string[] = [];
   tagHint: string = '';
 
-  constructor(private readonly activatedRoute: ActivatedRoute, private router: Router, private renderer: Renderer2, private el: ElementRef) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private renderer: Renderer2, private el: ElementRef) {
     this.tags = this.activatedRoute.snapshot.data['tags']
   }
-  
+
   ngOnInit(){
     this.activatedRoute.params.subscribe((params: Params) => {
       this.resetSearchParams();
@@ -130,7 +130,7 @@ export class SearchbarComponent {
       }
     }
   }
-  
+
   deselectCheckbox(tagName: string) {
     const checkbox = document.getElementById(tagName) as HTMLInputElement;
     if (checkbox) {

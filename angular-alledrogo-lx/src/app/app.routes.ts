@@ -6,6 +6,8 @@ import { PostDetailsComponent } from './components/post-details/post-details.com
 import { postDetailsResolver } from './resolvers/post-details.resolver';
 import { tagListResolver } from './resolvers/tag-list.resolver';
 import { postListBySearchStringResolver } from './resolvers/post-list-by-search-string.resolver';
+import { LoginComponent } from "./components/login/login.component";
+import { SignupComponent } from "./components/signup/signup.component";
 
 export const routes: Routes = [
   { 
@@ -24,7 +26,7 @@ export const routes: Routes = [
   },
   { 
     path: 'login', 
-    component: HomepageComponent, 
+    component: LoginComponent, 
     title: 'LogIn'
   },
   { 
@@ -58,6 +60,10 @@ export const routes: Routes = [
       tags: tagListResolver
     }
   },
+  { path: 'signup',
+    component: SignupComponent,
+    title: 'Signup'
+  }
 ];
 
 @NgModule({
