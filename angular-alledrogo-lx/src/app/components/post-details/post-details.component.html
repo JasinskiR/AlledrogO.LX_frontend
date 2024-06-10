@@ -12,7 +12,7 @@
     <div *ngIf="!mainPhoto" class="no-photo">No main photo available</div>
     <div class="preview">
       <div *ngFor="let photo of post.images; let i = index">
-        <img class="thumbnail" [src]="photo.url" 
+        <img class="thumbnail-prev" [src]="photo.url" 
         [class.selected]="photo.url === mainPhoto" 
         [class.thumbnail]="photo.url !== mainPhoto" 
         (click)="changeMainPhoto(photo.url, i)">
