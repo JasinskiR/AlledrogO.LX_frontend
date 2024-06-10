@@ -4,7 +4,10 @@
 
 <p class="users-post-header"> Your posts: </p>
 <section class="results">
-  <app-post-in-general
-  *ngFor="let post of allPosts" 
-  [post]="post"></app-post-in-general> 
+  <div *ngFor="let post of allPosts">
+    <app-post-in-general [post]="post"></app-post-in-general>
+    <a [routerLink]="['/edit-post', post.id]" class="edit-post"> 
+      <button class="edit-post-button"> Edit post </button>
+    </a>
+  </div>
 </section>

@@ -11,6 +11,7 @@ import { SignupComponent } from "./components/signup/signup.component";
 import { UsersPostsComponent } from './components/users-posts/users-posts.component';
 import { usersPostsListResolver } from './resolvers/users-posts-list.resolver';
 import { AddPostComponent } from './components/add-post/add-post.component';
+import { EditPostComponent } from './components/edit-post/edit-post.component';
 
 export const routes: Routes = [
   { 
@@ -74,6 +75,14 @@ export const routes: Routes = [
     path: 'new-post',
     component: AddPostComponent,
     title: 'Add new post'
+  },
+  {
+    path: 'edit-post/:postId',
+    component: EditPostComponent,
+    title: 'Edit post',
+    resolve: {
+      post: postDetailsResolver
+    }
   }
 ];
 

@@ -1,0 +1,110 @@
+<div class="post-page-container">
+  <p class="add-post-header"> Edit your post </p>
+  <form [formGroup]="editPostForm" class="post-form" (submit)="save()">
+    <div class="post-detail-container">
+      <label for="title" class="post-detail-label">Title:</label>
+      <input 
+          type="text" 
+          id="title"
+          class="post-form-control" 
+          formControlName="title"
+          required
+      />
+      <div class="alert-space">
+        <div 
+            *ngIf="title?.invalid && (title?.dirty || title?.touched)"
+            class= "alert">
+            <div *ngIf="title?.errors?.['required']">Title is required </div>
+            <div *ngIf="title?.errors?.['maxlength']">Title is too long </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="post-detail-container">
+      <label for="description" class="post-detail-label">Description:</label>
+      <textarea 
+          class="post-form-control" 
+          id="description" 
+          formControlName="description"
+          required> 
+      </textarea>
+      <div class="alert-space">
+        <div 
+          *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+          class= "alert">
+          <div *ngIf="description?.errors?.['required']">Description is also required</div>
+          <div *ngIf="description?.errors?.['maxlength']">Too big description </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-detail-container">
+      <label for="status" class="post-detail-label">Status:</label>
+      <select id="status" (change)="saveNewPostStatus($event)" class="post-form-control" style="cursor: pointer;">
+        <option *ngFor="let option of visibility" [value]="option">{{ option }}</option>
+      </select>
+    </div>
+
+    <div class="post-detail-container post-images-container">
+      <label for="image" class="post-detail-label">Images:</label>
+      <div class="edit-preview">
+        <div *ngFor="let photo of post.images" class="element-edit-delete">
+          <img class="selected" [src]="photo.url" >
+          <i 
+            class="fas fa-times delete-icon"
+            (click)="setImageToDelete(photo)"
+            [ngClass]="{'marked-for-deletion': isImageMarkedForDeletion(photo)}"
+            ></i>
+        </div>
+      </div>
+      <div>
+        
+      </div>
+      <input 
+        type="file"
+        id="image"
+        class="image-upload"
+        (change)="uploadImage($event)"
+        formControlName="image"
+        />
+    </div>
+
+    <div class="post-detail-container">
+      <label for="tag" class="post-detail-label">Tags:</label>
+      <div class="edit-preview">
+        <div *ngFor="let tag of post.tags" class="element-edit-delete">
+          {{ tag }}
+          <i 
+            class="fas fa-times delete-icon" 
+            (click)="setTagToDelete(tag)"
+            [ngClass]="{'marked-for-deletion': isTagMarkedForDelete(tag)}"
+          ></i>
+        </div>
+      </div>
+      <div class="input-tag-container">
+        <input 
+        type="text" 
+        id="tag"
+        class="post-form-control" 
+        formControlName="tag"
+        />
+        <i class="fas fa-plus plus-icon" (click)="setTagToAdd()"></i>
+      </div>
+    </div>
+
+    <div class="post-form-buttons-container">
+      <button 
+        class="post-form-button" 
+        type="submit"
+        [disabled]="editPostForm.invalid"> 
+        Submit
+      </button>
+      <button 
+        class="post-form-button" 
+        type="button"
+        (click)="cancel()"> 
+        Go back
+      </button>
+    </div> 
+  </form>
+</div>

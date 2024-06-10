@@ -1,18 +1,32 @@
-.new-post-button {
+.new-post-button, .edit-post-button {
   background-color: white;
   border: none;
   cursor: pointer;
   color:#58A399;
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 2rem;
+  margin-bottom: 4rem;
   padding: 1.5rem;
   transition: all 0.3s;
+}
+
+.new-post-button{
+  margin: 2rem;
 }
 
 .new-post-button:hover, .post-form-button:active {
   background-color: #58A399;
   color: white;
+}
+
+.edit-post {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.edit-post-button:hover {
+  background-color: #E2F4C5;
 }
 
 .users-post-header{

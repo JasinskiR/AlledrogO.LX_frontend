@@ -1,0 +1,54 @@
+.image-edit {
+  display: flex;
+  flex-direction: row;
+  margin: 2%;
+}
+
+.edit-preview {
+  column-gap: 2vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 5vh;
+}
+
+.post-images-container {
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+input::file-selector-button {
+  background-color: white;
+  border: none;
+  color: #496989;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+  padding: 1em;
+}
+
+.element-edit-delete {
+  margin: 2%;
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+}
+
+.delete-icon {
+  // color: red;
+  cursor: pointer;
+  height: 1em;
+}
+
+.input-tag-container {
+  align-items: center;
+  display: flex;
+}
+
+.plus-icon {
+  cursor: pointer;
+  margin-left: 1vw;
+}
+
+.marked-for-deletion {
+  color: red;
+}
