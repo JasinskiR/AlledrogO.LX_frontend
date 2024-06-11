@@ -188,13 +188,15 @@ export class EditPostComponent {
     return this.tagsToDelete.includes(tag);
   }
 
-  save() {
-    this.addNewTags();
-    this.deleteTags();
-    this.changeStatus();
-    this.deleteImages(this.imagesToDelete);
-    this.changeDetails();
-    this.router.navigate(['/account']);
+
+
+  async save() {
+    await this.addNewTags();
+    await this.changeStatus();
+    await this.deleteImages(this.imagesToDelete);
+    await this.deleteTags();
+    await this.changeDetails();
+    await this.router.navigate(['/account']);
   }
 
   cancel() {
