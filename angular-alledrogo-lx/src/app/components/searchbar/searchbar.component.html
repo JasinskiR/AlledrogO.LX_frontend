@@ -1,9 +1,8 @@
 <div class="search-container">
   <div class="text">
     <input class="search-input" type="text" placeholder="Search by text or #tag... " #searchString (input)="onInputChange(searchString.value)">
-    <button class="icon-button" (click)="searchByString(searchString.value)"> <i class="fa-sharp fa-solid fa-magnifying-glass search-icon"></i> </button>
   </div>
-  <p> <button class="hint-tag-button" (click)="onHintTagClick()"> Tag hint: {{tagHint}} </button> </p>
+  <p class="hints"> <button class="hint-tag-button" (click)="onHintTagClick()"> Tag hint: {{tagHint}} </button> </p>
   <p>Choose tags</p>
   <div class="tags">
     <div class="tag" *ngFor="let tag of tags">

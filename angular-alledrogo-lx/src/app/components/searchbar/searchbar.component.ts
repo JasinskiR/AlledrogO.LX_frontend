@@ -45,7 +45,7 @@ export class SearchbarComponent {
 
   onInputChange(searchString: string): void {
     const hintBtn = document.getElementsByClassName('hint-tag-button') as HTMLCollectionOf<HTMLElement>;
-    hintBtn[0].style.visibility = "hidden";
+    hintBtn[0].classList.remove('visible');
     this.tagHint = '';
     if (searchString.startsWith('#')) {
       let searchTag: string = searchString.substring(1);
@@ -53,7 +53,7 @@ export class SearchbarComponent {
         searchTag = searchString.substring(1, searchString.indexOf(' '));
       }
       const matchingTags = this.tags.filter(tag => tag.name.startsWith(searchTag));
-      hintBtn[0].style.visibility = "visible";
+      hintBtn[0].classList.add('visible');
       if (matchingTags.length > 0) {
         const bestTag = matchingTags.reduce((prev, current) => (prev.postCount > current.postCount) ? prev : current);
         this.tagHint = bestTag ? bestTag.name : '';
@@ -89,16 +89,6 @@ export class SearchbarComponent {
       }
     }
     console.log(this.selectedTags);
-  }
-
-  searchByString(searchString: string) {
-    let bodySearch: string = '';
-    if (searchString.startsWith('#')) {
-      if (searchString.includes(' ')) {
-        bodySearch = searchString.substring(searchString.indexOf(' ') + 1);
-      }
-    }
-    this.router.navigate(['/search', JSON.stringify(this.createSearchBody(bodySearch, false))]);
   }
 
   searchAll(searchString: string) {
