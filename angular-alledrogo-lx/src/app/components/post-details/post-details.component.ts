@@ -14,12 +14,17 @@ import { Post } from '../../models/post';
 })
 export class PostDetailsComponent {
   readonly post: Post;
-  mainPhoto: string | undefined;
+  mainPhoto: string | null;
   selectedPhotoIndex: number;
 
   constructor(private readonly activatedRoute: ActivatedRoute) {
     this.post = this.activatedRoute.snapshot.data['post'];
-    this.mainPhoto = this.post.images?.[0].url;
+    if (this.post.images && this.post.images.length > 0) {
+      this.mainPhoto = this.post.images[0].url;
+    }
+    else {
+      this.mainPhoto = null;
+    }
     console.log("cze");
     console.log(this.mainPhoto);
     this.selectedPhotoIndex = 0;

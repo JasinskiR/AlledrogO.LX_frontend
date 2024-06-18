@@ -9,7 +9,7 @@
     <li *ngIf="isLoggedIn()">
       <a (click)="logout()" routerLink="/home">Logout</a>
     </li>
-    <li>
+    <li *ngIf="isLoggedIn()">
       <a routerLink="/account">Account</a>
     </li>
     <li *ngIf="!isLoggedIn()">

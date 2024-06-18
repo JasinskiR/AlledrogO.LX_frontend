@@ -1,0 +1,55 @@
+<div class="post-page-container">
+  <p class="add-post-header"> Create your post </p>
+  <form [formGroup]="postForm" class="post-form" (submit)="addPost()">
+    <div class="post-detail-container">
+      <label for="title" class="post-detail-label">Title:</label>
+      <input 
+          type="text" 
+          id="title"
+          class="post-form-control" 
+          formControlName="title"
+          required
+      />
+      <div class="alert-space">
+        <div 
+            *ngIf="title?.invalid && (title?.dirty || title?.touched)"
+            class= "alert">
+            <div *ngIf="title?.errors?.['required']">Title is required </div>
+            <div *ngIf="title?.errors?.['maxlength']">Title is too long </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="post-detail-container">
+      <label for="description" class="post-detail-label">Description:</label>
+      <textarea 
+          class="post-form-control" 
+          id="description" 
+          formControlName="description"
+          required> 
+      </textarea>
+      <div class="alert-space">
+        <div 
+          *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+          class= "alert">
+          <div *ngIf="description?.errors?.['required']">Description is also required</div>
+          <div *ngIf="description?.errors?.['maxlength']">Too big description </div>
+        </div>
+      </div>
+    </div>
+    <div class="post-form-buttons-container">
+      <button 
+        class="post-form-button" 
+        type="submit"
+        [disabled]="postForm.invalid"> 
+        Submit
+      </button>
+      <button 
+        class="post-form-button" 
+        type="button"
+        (click)="cancel()"> 
+        Go back
+      </button>
+    </div> 
+  </form>
+</div>

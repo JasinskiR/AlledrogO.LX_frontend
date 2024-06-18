@@ -108,7 +108,13 @@
   font-size: medium;
   min-width: 20vw;
   transition: all 0.3s;
-  visibility: hidden;
+  transform: scaleX(0);
+  transform: scaleY(0);
+}
+
+.hint-tag-button.visible {
+  transform: scaleX(1);
+  transform: scaleY(1);
 }
 
 .hint-tag-button:hover, .hint-tag-button:active {

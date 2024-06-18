@@ -1,0 +1,13 @@
+<a routerLink="/new-post">
+  <button class="new-post-button"> Add new post </button>
+</a>
+
+<p class="users-post-header"> Your posts: </p>
+<section class="results">
+  <div *ngFor="let post of allPosts">
+    <app-post-in-general [post]="post"></app-post-in-general>
+    <a [routerLink]="['/edit-post', post.id]" class="edit-post"> 
+      <button class="edit-post-button"> Edit post </button>
+    </a>
+  </div>
+</section>
