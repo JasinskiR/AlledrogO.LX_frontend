@@ -12,30 +12,32 @@ import { UsersPostsComponent } from './components/users-posts/users-posts.compon
 import { usersPostsListResolver } from './resolvers/users-posts-list.resolver';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
+import {ChatComponent} from "./components/chat/chat.component";
+import {chatListResolver} from "./resolvers/chat-list.resolver";
 
 export const routes: Routes = [
-  { 
-    path: '', 
-    redirectTo: 'home', 
-    pathMatch: 'full' 
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
   },
-  { 
-    path: 'home', 
-    component: HomepageComponent, 
+  {
+    path: 'home',
+    component: HomepageComponent,
     title: 'Homepage',
     resolve: {
       posts: postListResolver,
       tags: tagListResolver
     }
   },
-  { 
-    path: 'login', 
-    component: LoginComponent, 
+  {
+    path: 'login',
+    component: LoginComponent,
     title: 'LogIn'
   },
-  { 
-    path: 'account', 
-    component: UsersPostsComponent, 
+  {
+    path: 'account',
+    component: UsersPostsComponent,
     title: 'Your account',
     resolve: {
       posts: usersPostsListResolver
@@ -49,18 +51,18 @@ export const routes: Routes = [
       post: postDetailsResolver
     }
   },
-  { 
-    path: 'search/:body', 
-    component: HomepageComponent, 
+  {
+    path: 'search/:body',
+    component: HomepageComponent,
     title: 'Search',
     resolve: {
       searchedPosts: postListBySearchStringResolver,
       tags: tagListResolver
     }
   },
-  { 
-    path: 'search', 
-    component: HomepageComponent, 
+  {
+    path: 'search',
+    component: HomepageComponent,
     title: 'Search',
     resolve: {
       posts: postListBySearchStringResolver,
@@ -70,6 +72,13 @@ export const routes: Routes = [
   { path: 'signup',
     component: SignupComponent,
     title: 'Signup'
+  },
+  { path: 'chat',
+    component: ChatComponent,
+    title: 'Chat',
+    resolve: {
+      chats: chatListResolver
+    }
   },
   {
     path: 'new-post',

@@ -1,0 +1,36 @@
+.container {
+  max-width: 100%;
+  height: 100%;
+}
+
+.card {
+  margin-bottom: 1rem;
+}
+
+.list-group {
+  max-height: calc(100vh - 100px);
+  //overflow-y: auto;
+}
+
+#messagesList {
+  max-height: 60vh;
+  //overflow-y: auto;
+}
+
+.bg-send {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  align-self: flex-end;
+}
+
+.bg-receive {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  align-self: flex-start;
+}
