@@ -2,9 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
 import { tagListResolver } from './tag-list.resolver';
+import { Tag } from '../models/tag';
 
 describe('tagListResolver', () => {
-  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
+  const executeResolver: ResolveFn<Tag[]> = (...resolverParameters) => 
       TestBed.runInInjectionContext(() => tagListResolver(...resolverParameters));
 
   beforeEach(() => {

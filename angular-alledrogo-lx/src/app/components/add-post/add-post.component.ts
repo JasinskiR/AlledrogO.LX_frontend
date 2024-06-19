@@ -28,6 +28,7 @@ export class AddPostComponent {
   }
 
   ngOnInit(): void {
+    this.getAuthorDetails();
     if (!this.authService.isLoggedIn) {
       this.router.navigate(['/home']);
     }
