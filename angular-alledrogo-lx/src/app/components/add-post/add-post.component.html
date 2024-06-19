@@ -37,6 +37,40 @@
         </div>
       </div>
     </div>
+
+    <div class="post-detail-container">
+      <label for="email" class="post-detail-label">Contact email (special for this post):</label>
+      <input 
+          type="text" 
+          id="email"
+          class="post-form-control" 
+          formControlName="email"
+      />
+      <div class="alert-space">
+        <div 
+            *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+            class= "alert">
+            <div *ngIf="email?.errors?.['email']">Email is incorrect </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="post-detail-container">
+      <label for="title" class="post-detail-label">Contact phone number (special for this post):</label>
+      <input 
+          type="text" 
+          id="phoneNumber"
+          class="post-form-control" 
+          formControlName="phoneNumber"
+      />
+      <div class="alert-space">
+        <div 
+            *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)"
+            class= "alert">
+        </div>
+      </div>
+    </div>
+
     <div class="post-form-buttons-container">
       <button 
         class="post-form-button" 
