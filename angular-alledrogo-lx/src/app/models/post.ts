@@ -12,7 +12,7 @@ export interface Post {
   images?: Image[];
   tags?: string[];
   status?: number;
-  authorId?: string;
+  authorId: string;
   authorDetails?: {
     email: string;
     phoneNumber: string;

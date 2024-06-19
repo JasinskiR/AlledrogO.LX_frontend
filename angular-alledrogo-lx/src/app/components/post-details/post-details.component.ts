@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Post } from '../../models/post';
+import {ChatService} from "../../services/chat.service";
 
 @Component({
   selector: 'app-post-details',
@@ -17,7 +18,10 @@ export class PostDetailsComponent {
   mainPhoto: string | null;
   selectedPhotoIndex: number;
 
-  constructor(private readonly activatedRoute: ActivatedRoute) {
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private chatService: ChatService,
+    private router: Router,) {
     this.post = this.activatedRoute.snapshot.data['post'];
     if (this.post.images && this.post.images.length > 0) {
       this.mainPhoto = this.post.images[0].url;
@@ -33,6 +37,14 @@ export class PostDetailsComponent {
   changeMainPhoto(photo: string, index: number) {
     this.mainPhoto = photo;
     this.selectedPhotoIndex = index;
+  }
+
+  redirectToChat() {
+    this.chatService.createChat(this.post.authorId).subscribe(chatId => {
+
+      console.log("Chat id" + chatId);
+      this.router.navigate(['/chat'], { queryParams: { chatId } });
+    });
   }
 
 }

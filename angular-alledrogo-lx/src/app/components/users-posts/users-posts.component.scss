@@ -1,4 +1,4 @@
-.new-post-button, .edit-post-button {
+.new-post-button, .edit-post-button, .view-chats-button {
   background-color: white;
   border: none;
   cursor: pointer;
@@ -10,11 +10,11 @@
   transition: all 0.3s;
 }
 
-.new-post-button{
+.new-post-button, view-chats-button{
   margin: 2rem;
 }
 
-.new-post-button:hover, .post-form-button:active {
+.new-post-button:hover, .view-chats-button:hover, .post-form-button:active{
   background-color: #58A399;
   color: white;
 }
@@ -54,5 +54,5 @@
 @media (max-width: 499px) {
   .results {
       grid-template-columns: 1fr;
-  }    
+  }
 }

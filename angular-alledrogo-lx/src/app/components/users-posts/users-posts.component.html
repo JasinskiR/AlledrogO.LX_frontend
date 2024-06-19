@@ -2,11 +2,15 @@
   <button class="new-post-button"> Add new post </button>
 </a>
 
+<a routerLink="/chat">
+  <button class="view-chats-button"> View Chats </button>
+</a>
+
 <p class="users-post-header"> Your posts: </p>
 <section class="results">
   <div *ngFor="let post of allPosts">
     <app-post-in-general [post]="post"></app-post-in-general>
-    <a [routerLink]="['/edit-post', post.id]" class="edit-post"> 
+    <a [routerLink]="['/edit-post', post.id]" class="edit-post">
       <button class="edit-post-button"> Edit post </button>
     </a>
   </div>

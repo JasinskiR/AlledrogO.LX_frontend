@@ -6,15 +6,24 @@
     <div class="description">
       {{ post.description }}
     </div>
+    <div class="send_msg">
+      Send a message to seller:
+      <button
+        class="btn send_msg"
+        (click)="redirectToChat()"
+      >
+        <i class="fa-sharp fa-solid fa-envelope nav-icon"></i>
+      </button>
+    </div>
   </div>
   <div class="photo-gallery">
     <img *ngIf="mainPhoto" class="main-photo" [src]="mainPhoto" alt="Main Photo">
     <div *ngIf="!mainPhoto" class="no-photo">No main photo available</div>
     <div class="preview">
       <div *ngFor="let photo of post.images; let i = index">
-        <img class="thumbnail-prev" [src]="photo.url" 
-        [class.selected]="photo.url === mainPhoto" 
-        [class.thumbnail]="photo.url !== mainPhoto" 
+        <img class="thumbnail-prev" [src]="photo.url"
+        [class.selected]="photo.url === mainPhoto"
+        [class.thumbnail]="photo.url !== mainPhoto"
         (click)="changeMainPhoto(photo.url, i)">
       </div>
     </div>
