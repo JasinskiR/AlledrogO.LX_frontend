@@ -1,8 +1,8 @@
 import {AuthService} from "../../services/auth.service";
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {FormGroup, FormControl, ReactiveFormsModule, Validators, FormsModule} from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import { PostsService } from '../../services/posts.service';
 import { AuthorService } from "../../services/author.service";
 
@@ -10,9 +10,11 @@ import { AuthorService } from "../../services/author.service";
   selector: 'app-add-post',
   standalone: true,
   imports: [
-    RouterLink, 
+    RouterLink,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    NgIf,
   ],
   templateUrl: './add-post.component.html',
   styleUrl: './add-post.component.scss'

@@ -1,17 +1,40 @@
-<a routerLink="/new-post">
-  <button class="new-post-button"> Add new post </button>
-</a>
+<nav class="navbar">
+  <a routerLink="/new-post">
+    <button class="new-post-button">Add new post</button>
+  </a>
+  <a routerLink="/chat">
+    <button class="view-chats-button">View Chats</button>
+  </a>
+</nav>
 
-<a routerLink="/chat">
-  <button class="view-chats-button"> View Chats </button>
-</a>
+<section class="posts-section">
+  <div class="posts-column">
+    <p class="users-post-header">Draft Posts:</p>
+    <div *ngFor="let post of draftPosts">
+      <app-post-in-general [post]="post"></app-post-in-general>
+      <a [routerLink]="['/edit-post', post.id]" class="edit-post">
+        <button class="edit-post-button">Edit post</button>
+      </a>
+    </div>
+  </div>
 
-<p class="users-post-header"> Your posts: </p>
-<section class="results">
-  <div *ngFor="let post of allPosts">
-    <app-post-in-general [post]="post"></app-post-in-general>
-    <a [routerLink]="['/edit-post', post.id]" class="edit-post">
-      <button class="edit-post-button"> Edit post </button>
-    </a>
+  <div class="posts-column">
+    <p class="users-post-header">Published Posts:</p>
+    <div *ngFor="let post of publishedPosts">
+      <app-post-in-general [post]="post"></app-post-in-general>
+      <a [routerLink]="['/edit-post', post.id]" class="edit-post">
+        <button class="edit-post-button">Edit post</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="posts-column">
+    <p class="users-post-header">Archived Posts:</p>
+    <div *ngFor="let post of archivedPosts">
+      <app-post-in-general [post]="post"></app-post-in-general>
+      <a [routerLink]="['/edit-post', post.id]" class="edit-post">
+        <button class="edit-post-button">Edit post</button>
+      </a>
+    </div>
   </div>
 </section>

@@ -1,58 +1,68 @@
-.new-post-button, .edit-post-button, .view-chats-button {
-  background-color: white;
+$primary-color: #58A399;
+$secondary-color: #E2F4C5;
+$button-text-color: white;
+$background-color: #f0f0f0;
+
+.new-post-button,
+.edit-post-button,
+.view-chats-button {
+  background-color: transparent;
   border: none;
   cursor: pointer;
-  color:#58A399;
+  color: $primary-color;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 4rem;
-  padding: 1.5rem;
+  margin: 0 1rem;
+  padding: 1rem 2rem;
   transition: all 0.3s;
+  font-family: 'Raleway', sans-serif;
 }
 
-.new-post-button, view-chats-button{
-  margin: 2rem;
+.new-post-button,
+.view-chats-button,
+.edit-post-button {
+  background-color: $primary-color;
+  color: $button-text-color;
+
+}
+.edit-post-button {
+  margin-bottom: 2rem;
 }
 
-.new-post-button:hover, .view-chats-button:hover, .post-form-button:active{
-  background-color: #58A399;
-  color: white;
-}
-
-.edit-post {
+.navbar {
+  background-color: $background-color;
+  padding: 1rem;
   display: flex;
   justify-content: center;
-  text-decoration: none;
+  align-items: center;
 }
 
-.edit-post-button:hover {
-  background-color: #E2F4C5;
-}
-
-.users-post-header{
-  color:#58A399;
+.users-post-header {
+  color: $primary-color;
   font-size: 1.5rem;
   font-weight: bold;
   margin-left: 2rem;
+  font-family: 'Raleway', sans-serif;
 }
 
-.results {
-  display: grid;
-  column-gap: 2em;
-  row-gap: 2em;
-  grid-template-columns: repeat(auto-fill, minmax(25em, 25em));
-  margin: 2em;
-  justify-content: space-around;
+.posts-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  //padding: 2rem;
 }
 
-@media (min-width: 500px) and (max-width: 768px) {
-  .results {
-    grid-template-columns: repeat(2, 1fr);
+.posts-column {
+  flex: 1;
+  margin: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .posts-section {
+    flex-direction: column;
   }
-}
 
-@media (max-width: 499px) {
-  .results {
-      grid-template-columns: 1fr;
+  .posts-column {
+    margin: 1rem 0;
   }
 }

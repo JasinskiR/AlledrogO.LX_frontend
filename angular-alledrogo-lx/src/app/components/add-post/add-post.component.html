@@ -1,89 +1,96 @@
-<div class="post-page-container">
-  <p class="add-post-header"> Create your post </p>
-  <form [formGroup]="postForm" class="post-form" (submit)="addPost()">
-    <div class="post-detail-container">
-      <label for="title" class="post-detail-label">Title:</label>
-      <input 
-          type="text" 
+<div class="background-svg">
+  <div class="post-container">
+    <p class="text-white post-header">Create your post</p>
+    <form [formGroup]="postForm" class="post-form" (submit)="addPost()">
+      <div class="element-input-container">
+        <label for="title" class="d-flex text-white element-label">Title:</label>
+        <input
+          type="text"
           id="title"
-          class="post-form-control" 
+          class="form-control text-white"
           formControlName="title"
           required
-      />
-      <div class="alert-space">
-        <div 
+        />
+        <div class="alert-space">
+          <div
             *ngIf="title?.invalid && (title?.dirty || title?.touched)"
-            class= "alert">
+            class="alert"
+          >
             <div *ngIf="title?.errors?.['required']">Title is required </div>
             <div *ngIf="title?.errors?.['maxlength']">Title is too long </div>
+          </div>
         </div>
       </div>
-    </div>
-  
-    <div class="post-detail-container">
-      <label for="description" class="post-detail-label">Description:</label>
-      <textarea 
-          class="post-form-control" 
-          id="description" 
+
+      <div class="element-input-container">
+        <label for="description" class="d-flex text-white element-label">Description:</label>
+        <textarea
+          class="form-control text-white"
+          id="description"
           formControlName="description"
-          required> 
-      </textarea>
-      <div class="alert-space">
-        <div 
-          *ngIf="description?.invalid && (description?.dirty || description?.touched)"
-          class= "alert">
-          <div *ngIf="description?.errors?.['required']">Description is also required</div>
-          <div *ngIf="description?.errors?.['maxlength']">Too big description </div>
+          required
+        ></textarea>
+        <div class="alert-space">
+          <div
+            *ngIf="description?.invalid && (description?.dirty || description?.touched)"
+            class="alert"
+          >
+            <div *ngIf="description?.errors?.['required']">Description is also required</div>
+            <div *ngIf="description?.errors?.['maxlength']">Too big description</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="post-detail-container">
-      <label for="email" class="post-detail-label">Contact email (special for this post):</label>
-      <input 
-          type="text" 
+      <div class="element-input-container">
+        <label for="email" class="d-flex text-white element-label">Contact email (special for this post):</label>
+        <input
+          type="text"
           id="email"
-          class="post-form-control" 
+          class="form-control text-white"
           formControlName="email"
-      />
-      <div class="alert-space">
-        <div 
+        />
+        <div class="alert-space">
+          <div
             *ngIf="email?.invalid && (email?.dirty || email?.touched)"
-            class= "alert">
-            <div *ngIf="email?.errors?.['email']">Email is incorrect </div>
+            class="alert"
+          >
+            <div *ngIf="email?.errors?.['email']">Email is incorrect</div>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="post-detail-container">
-      <label for="title" class="post-detail-label">Contact phone number (special for this post):</label>
-      <input 
-          type="text" 
+      <div class="element-input-container">
+        <label for="phoneNumber" class="d-flex text-white element-label">Contact phone number (special for this post):</label>
+        <input
+          type="text"
           id="phoneNumber"
-          class="post-form-control" 
+          class="form-control text-white"
           formControlName="phoneNumber"
-      />
-      <div class="alert-space">
-        <div 
+        />
+        <div class="alert-space">
+          <div
             *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)"
-            class= "alert">
+            class="alert"
+          ></div>
         </div>
       </div>
-    </div>
 
-    <div class="post-form-buttons-container">
-      <button 
-        class="post-form-button" 
-        type="submit"
-        [disabled]="postForm.invalid"> 
-        Submit
-      </button>
-      <button 
-        class="post-form-button" 
-        type="button"
-        (click)="cancel()"> 
-        Go back
-      </button>
-    </div> 
-  </form>
+      <div class="post-form-buttons-container">
+        <button
+          class="button-post"
+          type="submit"
+          [disabled]="postForm.invalid"
+        >
+          Submit
+        </button>
+        <button
+          class="button-post"
+          type="button"
+          (click)="cancel()"
+        >
+          Go back
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

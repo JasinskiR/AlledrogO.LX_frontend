@@ -1,0 +1,139 @@
+$main-font: 'Raleway', sans-serif;
+
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+.background-svg {
+  height: 100vh;
+  min-height: 1000px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #496989;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-radius: 12px;
+  width: 600px;
+  height: auto;
+  max-height: 932px;
+  background-color: #58A399;
+  color: #fff;
+  padding: 40px 40px;
+  margin-top: 60px;
+}
+
+.post-form {
+  background-color: #58A399;
+}
+
+.text-white {
+  font-size: 1em;
+  font-family: $main-font;
+  font-weight: 400;
+  color: white;
+}
+
+.post-header {
+  font-size: 2.75em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.element-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.element-label {
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 2px solid white;
+  text-align: center;
+}
+
+.form-control:focus {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.button-post {
+  font-weight: 700;
+  font-size: 1.25em;
+  border: none;
+  border-radius: 5px;
+  background-color: #A8CD9F;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-post:hover {
+  background-color: darken(#A8CD9F, 10%);
+}
+
+.button-post:active {
+  background-color: #A8CD9F;
+}
+
+.button-post[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #A8CD9F;
+}
+
+.button-post[disabled]:hover {
+  background-color: darken(#A8CD9F, 10%);
+}
+
+.button-post[disabled]:active {
+  background-color: #A8CD9F;
+}
+
+.alert {
+  color: red;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .post-container {
+    width: 400px;
+  }
+
+  .text-white {
+    font-size: 0.8em;
+  }
+
+  .post-header {
+    font-size: 2em;
+  }
+
+  .button-post {
+    font-size: 1em;
+  }
+}
