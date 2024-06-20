@@ -15,8 +15,14 @@ export interface UserRole {
   id: string;
 }
 
+export interface ChatUser {
+  chatId: string;
+  recieverEmail: string;
+}
+
 export interface Chat {
-  "id": "string";
-  "chatsAsBuyer": string[];
-  "chatsAsAdvertiser": string[];
+  id: string;
+  email: string,
+  chatsAsBuyer: ChatUser[];
+  chatsAsAdvertiser: ChatUser[];
 }

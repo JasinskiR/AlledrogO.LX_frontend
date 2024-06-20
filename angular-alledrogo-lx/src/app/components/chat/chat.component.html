@@ -10,14 +10,14 @@
     <div class="col-md-4">
       <div class="list-group">
         <h5>Chats as Buyer</h5>
-        <button *ngFor="let chatId of buyerChats" class="list-group-item list-group-item-action"
-                [ngClass]="{'active': chatId === selectedChatId}" (click)="selectChat(chatId)">
-          {{ chatId }}
+        <button *ngFor="let chat of buyerChats" class="list-group-item list-group-item-action"
+                [ngClass]="{'active': chat.chatId === selectedChatId}" (click)="selectChat(chat.chatId)">
+          {{ chat.recieverEmail }}
         </button>
         <h5>Chats as Advertiser</h5>
-        <button *ngFor="let chatId of advertiserChats" class="list-group-item list-group-item-action"
-                [ngClass]="{'active': chatId === selectedChatId}" (click)="selectChat(chatId)">
-          {{ chatId }}
+        <button *ngFor="let chat of advertiserChats" class="list-group-item list-group-item-action"
+                [ngClass]="{'active': chat.chatId === selectedChatId}" (click)="selectChat(chat.chatId)">
+          {{ chat.recieverEmail }}
         </button>
       </div>
     </div>
