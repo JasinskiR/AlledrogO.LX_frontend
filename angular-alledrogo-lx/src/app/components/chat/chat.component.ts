@@ -3,7 +3,7 @@ import {ChatService} from "../../services/chat.service";
 import {ActivatedRoute} from "@angular/router";
 import {CommonModule, NgClass} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {Chat, Message} from "../../models/chat";
+import {Chat, ChatUser, Message} from "../../models/chat";
 
 @Component({
   selector: 'app-chat',
@@ -18,8 +18,8 @@ import {Chat, Message} from "../../models/chat";
 })
 export class ChatComponent implements OnInit {
   chats!: Chat;
-  buyerChats: string[] = [];
-  advertiserChats: string[] = [];
+  buyerChats: ChatUser[] = [];
+  advertiserChats: ChatUser[] = [];
   selectedChatId: string | null = null;
   messages: Message[] = [];
   newMessage: string = '';

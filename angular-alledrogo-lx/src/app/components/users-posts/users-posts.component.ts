@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import {AuthService} from "../../services/auth.service";
+import { AuthService } from '../../services/auth.service';
 import { Post } from '../../models/post';
 import { PostInGeneralComponent } from '../post-in-general/post-in-general.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,20 +16,28 @@ import { HttpClientModule } from '@angular/common/http';
     RouterLink
   ],
   templateUrl: './users-posts.component.html',
-  styleUrl: './users-posts.component.scss'
+  styleUrls: ['./users-posts.component.scss']
 })
 export class UsersPostsComponent {
-  allPosts: Post[] = [];
+  draftPosts: Post[] = [];
+  publishedPosts: Post[] = [];
+  archivedPosts: Post[] = [];
 
-  constructor (private activatedRoute: ActivatedRoute, private authService: AuthService, private router: Router) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     if (!this.authService.isLoggedIn) {
       this.router.navigate(['/home']);
     }
     this.activatedRoute.data.subscribe(data => {
-      this.allPosts = data['posts'];
+      const allPosts: Post[] = data['posts'];
+      this.draftPosts = allPosts.filter(post => post.status === 0);
+      this.publishedPosts = allPosts.filter(post => post.status === 1);
+      this.archivedPosts = allPosts.filter(post => post.status === 2);
     });
-    console.log(this.allPosts);
   }
 }
