@@ -6,6 +6,15 @@
     <div class="description">
       {{ post.description }}
     </div>
+    <div class="contact">
+      Contact info
+      <div class="contact-part">
+        E-mail: {{post.authorDetails?.email}}
+      </div>
+      <div class="contact-part">
+        Phone number: {{post.authorDetails?.phoneNumber}}
+      </div>
+    </div>
     <div class="send_msg">
       Send a message to seller:
       <button

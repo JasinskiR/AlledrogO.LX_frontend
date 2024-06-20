@@ -2,9 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
 import { usersPostsListResolver } from './users-posts-list.resolver';
+import { Post } from '../models/post';
 
 describe('usersPostsListResolver', () => {
-  const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
+  const executeResolver: ResolveFn<Post[]> = (...resolverParameters) => 
       TestBed.runInInjectionContext(() => usersPostsListResolver(...resolverParameters));
 
   beforeEach(() => {
