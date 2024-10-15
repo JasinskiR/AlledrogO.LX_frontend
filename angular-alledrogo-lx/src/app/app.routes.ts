@@ -14,8 +14,13 @@ import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
 import {ChatComponent} from "./components/chat/chat.component";
 import {chatListResolver} from "./resolvers/chat-list.resolver";
+import { AuthRedirectComponent } from './components/auth-redirect/auth-redirect.component';
 
 export const routes: Routes = [
+  { 
+    path: 'auth', 
+    component: AuthRedirectComponent 
+  },
   {
     path: '',
     redirectTo: 'home',
