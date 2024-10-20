@@ -15,6 +15,7 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import {ChatComponent} from "./components/chat/chat.component";
 import {chatListResolver} from "./resolvers/chat-list.resolver";
 import { AuthRedirectComponent } from './components/auth-redirect/auth-redirect.component';
+import { UserListComponent } from './components/user-list/user-list.component';
 
 export const routes: Routes = [
   { 
@@ -39,6 +40,11 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     title: 'LogIn'
+  },
+  {
+    path: 'users',
+    component: UserListComponent,
+    title: 'All users',
   },
   {
     path: 'account',

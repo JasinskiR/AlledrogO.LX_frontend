@@ -14,6 +14,10 @@ export class ChatService {
 
   constructor(private http: HttpClient) { }
 
+  getAllUsers(): Observable<Chat[]> {
+    return this.http.get<Chat[]>(`${this.baseUrl}`);
+  }
+
   getChats(): Observable<Chat> {
     return this.http.get<Chat>(`${this.baseUrl}/info`);
   }
