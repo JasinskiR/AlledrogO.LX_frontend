@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Tag } from '../models/tag';
+import { environment } from '../../environments/environment';
 
-const tagUrl = 'http://localhost:5000/api/Tag';
+const tagUrl = `${environment.backendUrl}/api/Tag`;
 
 @Injectable({
   providedIn: 'root'

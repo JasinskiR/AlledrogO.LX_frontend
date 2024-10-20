@@ -2,8 +2,9 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { LoginCredentials, LoginResponseBody } from '../models/user';
+import { environment } from '../../environments/environment';
 
-const loginUrl = 'http://localhost:5000/api/User/login';
+const loginUrl = `${environment.backendUrl}/api/User/login`;
 
 @Injectable({
   providedIn: 'root'

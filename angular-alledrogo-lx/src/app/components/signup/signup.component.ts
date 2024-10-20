@@ -5,8 +5,8 @@ import {NgIf} from "@angular/common";
 // @ts-ignore
 import zxcvbn from 'zxcvbn';
 import {User} from '../../models/user';
-import {LoginService} from "../../services/login.service";
 import {SignupService} from "../../services/signup.service";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-signup',
@@ -26,11 +26,16 @@ export class SignupComponent {
 
   passwordType: string = 'password';
   showPasswordIcon: boolean = false;
-
+  cognitoLoginUrl: string = environment.cognitoLoginUrl;
   constructor(
     private router: Router,
     private signupService: SignupService
   ) {
+  }
+
+  ngOnInit(): void {
+    // Redirect to Cognito login page
+    window.location.href = this.cognitoLoginUrl;
   }
 
   password: string = 'a';
