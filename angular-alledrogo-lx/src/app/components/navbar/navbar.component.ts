@@ -15,8 +15,6 @@ import { environment } from '../../../environments/environment';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  cognitoLoginUrl = environment.cognitoLoginUrl;
-  backendUrl = environment.backendUrl;
   constructor(public authService: AuthService) {}
 
   isLoggedIn(): boolean {

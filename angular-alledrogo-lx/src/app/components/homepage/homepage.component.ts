@@ -24,8 +24,6 @@ export class HomepageComponent {
   posts: Post[] = [];
   tags: string[] = [];
   searchString: string = '';
-  cognitoLoginUrl = environment.cognitoLoginUrl;
-  backendUrl = environment.backendUrl;
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
