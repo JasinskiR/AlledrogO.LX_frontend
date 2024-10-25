@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {AuthService} from "../../services/auth.service";
 import {NgIf} from "@angular/common";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,8 @@ import {NgIf} from "@angular/common";
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  cognitoLoginUrl = environment.cognitoLoginUrl;
+  backendUrl = environment.backendUrl;
   constructor(public authService: AuthService) {}
 
   isLoggedIn(): boolean {

@@ -1,5 +1,10 @@
+// export const environment = {
+//   production: true,
+//   cognitoLoginUrl: process.env['COGNITO_LOGIN_URL'] || '',
+//   backendUrl: process.env['BACKEND_URL'] || ''
+// };
 export const environment = {
-    production: true,
-    cognitoLoginUrl: 'https://alledrogo.auth.us-east-1.amazoncognito.com/oauth2/authorize?client_id=6u61gnmfu8oou9q0f4f4qedtf4&response_type=token&scope=email+openid+phone&redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fauth',
-    backendUrl: 'http://localhost:5000' 
-  };
+  production: true,
+  cognitoLoginUrl: 'https://hardcoded-cognito-login-url.com',
+  backendUrl: 'http://localhost:5044'
+};

@@ -5,6 +5,7 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { Post } from '../../models/post';
 import { ActivatedRoute, Params  } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-homepage',
@@ -23,6 +24,8 @@ export class HomepageComponent {
   posts: Post[] = [];
   tags: string[] = [];
   searchString: string = '';
+  cognitoLoginUrl = environment.cognitoLoginUrl;
+  backendUrl = environment.backendUrl;
 
   constructor(private activatedRoute: ActivatedRoute) {
   }
