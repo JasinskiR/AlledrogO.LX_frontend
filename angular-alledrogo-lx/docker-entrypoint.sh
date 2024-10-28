@@ -3,6 +3,9 @@
 
 set -e
 
+echo "COGNITO_LOGIN_URL='$COGNITO_LOGIN_URL'"
+echo "BACKEND_URL='$BACKEND_URL'"
+
 # sed -i "s|COGNITO_LOGIN_URL|$COGNITO_LOGIN_URL|g" /usr/share/nginx/html/main*.js
 perl -pi -e "s|COGNITO_LOGIN_URL|$COGNITO_LOGIN_URL|g" /usr/share/nginx/html/main*.js
 perl -pi -e "s|BACKEND_URL|$BACKEND_URL|g" /usr/share/nginx/html/main*.js
@@ -49,4 +52,4 @@ if [ "$1" = "nginx" ] || [ "$1" = "nginx-debug" ]; then
 fi
 
 # exec "$@"
-exec nginx -g "daemon off;"
+exec nginx -g 'daemon off;' || (cat /var/log/nginx/error.log && exit 1)
