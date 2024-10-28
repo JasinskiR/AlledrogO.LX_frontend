@@ -3,8 +3,9 @@
 
 set -e
 
-sed -i "s|COGNITO_LOGIN_URL|${COGNITO_LOGIN_URL}|g" /usr/share/nginx/html/main*.js
-sed -i "s|BACKEND_URL|${BACKEND_URL}|g" /usr/share/nginx/html/main*.js
+# sed -i "s|COGNITO_LOGIN_URL|$COGNITO_LOGIN_URL|g" /usr/share/nginx/html/main*.js
+perl -pi -e "s|COGNITO_LOGIN_URL|$COGNITO_LOGIN_URL|g" /usr/share/nginx/html/main*.js
+perl -pi -e "s|BACKEND_URL|$BACKEND_URL|g" /usr/share/nginx/html/main*.js
 
 entrypoint_log() {
     if [ -z "${NGINX_ENTRYPOINT_QUIET_LOGS:-}" ]; then
