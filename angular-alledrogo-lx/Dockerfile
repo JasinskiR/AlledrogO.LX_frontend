@@ -16,10 +16,12 @@ COPY --from=build /app/ssl/backend-cert.crt /usr/local/share/ca-certificates/bac
 COPY --from=build /app/ssl/private.key /etc/nginx/ssl/private.key
 COPY --from=build /app/dist/angular-alledrogo-lx/browser /usr/share/nginx/html
 COPY /nginx.conf /etc/nginx/conf.d/default.conf
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+COPY /docker-entrypoint.sh /docker-entrypoint.sh
+
 RUN update-ca-certificates
 # Ustawienie odpowiednich uprawnień
 RUN chmod 600 /etc/nginx/ssl/private.key
 RUN chmod 644 /etc/nginx/ssl/certificate.crt
+RUN chmod +x /docker-entrypoint.sh
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]

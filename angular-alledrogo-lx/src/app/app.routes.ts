@@ -12,16 +12,12 @@ import { UsersPostsComponent } from './components/users-posts/users-posts.compon
 import { usersPostsListResolver } from './resolvers/users-posts-list.resolver';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { EditPostComponent } from './components/edit-post/edit-post.component';
-import {ChatComponent} from "./components/chat/chat.component";
-import {chatListResolver} from "./resolvers/chat-list.resolver";
+import { ChatComponent} from "./components/chat/chat.component";
+import { chatListResolver} from "./resolvers/chat-list.resolver";
 import { AuthRedirectComponent } from './components/auth-redirect/auth-redirect.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 
 export const routes: Routes = [
-  { 
-    path: 'auth', 
-    component: AuthRedirectComponent 
-  },
   {
     path: '',
     redirectTo: 'home',
@@ -35,6 +31,11 @@ export const routes: Routes = [
       posts: postListResolver,
       tags: tagListResolver
     }
+  },
+  { 
+    path: 'auth', 
+    component: AuthRedirectComponent,
+    title: 'Auth'
   },
   {
     path: 'login',
