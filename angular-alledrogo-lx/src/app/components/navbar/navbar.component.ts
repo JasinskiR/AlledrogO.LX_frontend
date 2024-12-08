@@ -15,12 +15,17 @@ import { environment } from '../../../environments/environment';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(public authService: AuthService) {}
+    constructor(public authService: AuthService) {}
 
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
-  }
-  logout(): void {
-    this.authService.logout();
-  }
+    isLoggedIn(): boolean {
+        return this.authService.isLoggedIn;
+    }
+
+    logout(): void {
+        this.authService.logout();
+    }
+
+    login(): void {
+        this.authService.login();
+    }
 }
