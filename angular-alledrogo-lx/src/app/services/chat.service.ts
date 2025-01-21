@@ -3,15 +3,20 @@ import { HubConnection, HubConnectionBuilder, LogLevel } from '@microsoft/signal
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Chat, ChatHistory, Message, UserRole} from "../models/chat";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
-  private baseUrl = 'http://localhost:5000/api/ChatUser';
+  private baseUrl = `${environment.backendUrl}/api/ChatUser`;
   private connection: HubConnection | null = null;
 
   constructor(private http: HttpClient) { }
+
+  getAllUsers(): Observable<Chat[]> {
+    return this.http.get<Chat[]>(`${this.baseUrl}`);
+  }
 
   getChats(): Observable<Chat> {
     return this.http.get<Chat>(`${this.baseUrl}/info`);
@@ -28,7 +33,7 @@ export class ChatService {
 
   connectToChat(chatId: string, token: string, onMessageReceived: (message: Message) => void): Promise<void> {
     this.connection = new HubConnectionBuilder()
-      .withUrl(`http://localhost:5000/chat?chatId=${chatId}`, {
+      .withUrl(`${environment.backendUrl}/chat?chatId=${chatId}`, {
         accessTokenFactory: () => token
       })
       .configureLogging(LogLevel.Information)

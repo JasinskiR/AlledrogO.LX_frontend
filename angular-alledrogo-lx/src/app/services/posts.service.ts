@@ -3,9 +3,9 @@ import { Post } from '../models/post';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs';
+import { environment } from '../../environments/environment';
 
-// const postUrl = 'http://localhost:3000/posts';
-const postUrl = 'http://localhost:5000/api/Post';
+const postUrl = `${environment.backendUrl}/api/Post`;
 
 @Injectable({
   providedIn: 'root'

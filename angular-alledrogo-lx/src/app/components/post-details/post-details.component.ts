@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Post } from '../../models/post';
 import {ChatService} from "../../services/chat.service";
-import {LoginService} from "../../services/login.service";
 import {AuthService} from "../../services/auth.service";
 
 @Component({

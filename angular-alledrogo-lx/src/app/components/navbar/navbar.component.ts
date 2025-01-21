@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {AuthService} from "../../services/auth.service";
 import {NgIf} from "@angular/common";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -14,12 +15,17 @@ import {NgIf} from "@angular/common";
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(public authService: AuthService) {}
+    constructor(public authService: AuthService) {}
 
-  isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
-  }
-  logout(): void {
-    this.authService.logout();
-  }
+    isLoggedIn(): boolean {
+        return this.authService.isLoggedIn;
+    }
+
+    logout(): void {
+        this.authService.logout();
+    }
+
+    login(): void {
+        this.authService.login();
+    }
 }
